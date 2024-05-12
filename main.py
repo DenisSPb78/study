@@ -1,22 +1,11 @@
-import math
+#На вход программе подается строка текста, содержащая символы. Программу упаковывает последовательности одинаковых символов заданной строки в подсписки
+#'w w w o r l d g g g g r e a t t e c c h e m g g p w w'
+x = input().split()
+sp = [[x[0]]]
+for i in range(1, len(x)):
 
-#рисуем треугольник Паскаля по заданному количеству уровней
-def fac(n):
-    res = 1
-    for i in range(1, n+1):
-        res*=i
-    return res
-
-n = int(input())+1  #Задаём количество отрисовываемых уровней
-sp = []
-for j in range(1, n):
-    sp = []
-    for i in range(1, j-1):
-        sp.append(math.ceil(fac(j-1)/(fac(i)*(fac(j-1-i)))))
-
-    if j == 1:
-        sp.append(1)
+    if x[i] in sp[-1]:
+        sp[-1].append(x[i])
     else:
-        sp.insert(0, 1)
-        sp.append(1)
-    print(*sp)
+        sp.append([x[i]])
+print(sp)
